@@ -11,6 +11,11 @@ int main(){
       Redis redis("tcp://172.31.94.226");
       std::cout << redis.ping() << std::endl;
 
+      redis.set("C++","redis");
+      std::cout << redis.get("C++").value() << std::endl;
+
+      redis.setex("redis",10,"c++");
+      redis.setnx("redis++","c++");
     }       
     catch (const Error& err) {
         // other errors
