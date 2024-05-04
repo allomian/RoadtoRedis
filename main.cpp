@@ -16,7 +16,14 @@ int main(){
 
       redis.setex("redis",10,"c++");
       redis.setnx("redis++","c++");
-    }       
+
+     //Lists in Redis
+     
+     redis.lpush("FoodItem","Pizza");
+     std::cout << redis.llen("FoodItem") << std::endl;
+     std::cout << redis.lpop("FoodItem").value() << std::endl;
+
+    }
     catch (const Error& err) {
         // other errors
         std::cout << err.what() << std::endl;
