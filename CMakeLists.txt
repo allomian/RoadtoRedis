@@ -9,6 +9,7 @@ include_directories(${CMAKE_SOURCE_DIR})
 
 include_directories(${CMAKE_SOURCE_DIR}\\redis-plus-plus\\src)
 include_directories(${CMAKE_SOURCE_DIR}\\redis-plus-plus\\src\\sw\\redis++\\cxx17)
+include_directories(${CMAKE_SOURCE_DIR}\\redis-plus-plus\\src\\sw\\redis++\\no_tls)
 
 include_directories(${CMAKE_SOURCE_DIR}\\redis-plus-plus\\src\\sw\\redis++\\tls)
 
