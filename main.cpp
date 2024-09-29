@@ -40,6 +40,18 @@ int main(){
     for(auto &data:hashData){
         std::cout<< data.first << "==>" << data.second << std::endl;
     }
+
+    std::string sortedSetKey = "YoutubeVideo"; 
+    redis.zadd(sortedSetKey,{std::make_pair("Video1",1000),std::make_pair("video2",2000)});
+
+    std::vector<std::pair<std::string,double>> redisSortedSetData;
+    redis.zrange(sortedSetKey,0,-1,std::back_inserter(redisSortedSetData));
+
+    for(auto [member,value]:redisSortedSetData){
+        std::cout << "Member:" << member << " Value:" << value <<std::endl;
+        std::cout << "Member:" << member << " Value:" << value << " Rank" <<  redis.zrank(sortedSetKey,member).value() <<std::endl;
+        std::cout << "Member:" << member << " Value:" << value << " Rank" <<  redis.zrevrank(sortedSetKey,member).value() <<std::endl;
+    }
     }
     catch (const Error& err) {
         // other errors
